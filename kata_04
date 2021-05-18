@@ -1,0 +1,141 @@
+class Alumno():
+    # Propiedades
+    nombre = ""
+    apellido = ""
+    __dni = ""
+    __edad = 0
+
+    # Añadido de kata_02
+    asignaturas = []
+
+    # Quitado de kata_01
+    # nota = 0
+
+    # Constructor
+    def __init__(self,nombre,apellido,dni,edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.__dni = dni
+        self.__edad = edad
+
+    # Get / Set
+    @property
+    def dni(self):
+      return self.__dni
+
+    @property
+    def edad(self):
+      return self.__edad
+
+    @edad.setter
+    def edad(self, edad):
+      if(edad > 0 and edad < 100):
+        self.__edad = edad
+      else:
+        raise TypeError("Edad fuera del rango")
+
+    # Metodos
+    def Saludar(self):
+        print("Hola " + self.nombre)
+
+    def Nota(self, nota):
+        if(nota <= 10 and nota >= 0):
+            self.nota = nota
+
+    def Cumple(self):
+        self.__edad += 1
+
+    def Mostrar_alumno(self):
+        print(f'Su nombre es {self.nombre} {self.apellido}.')
+        print("Con DNI: " + self.__dni)
+        print("Tiene " + str(self.__edad) + " años.")
+
+        # Añadido kata_02
+        print(self.asignaturas)
+
+    # Función añadida kata_02
+    def anyadir_asignatura(self, asignatura):
+        self.asignaturas.append(asignatura)
+
+        # Quitado de kata_01
+        # print("Su nota es: " + str(self.nota))
+
+class Asignatura():
+  # Propiedades
+  __id = 0
+  nombre = ""
+  __nota = 0
+
+  # Constructor
+  def __init__(self, nombre):
+    self.nombre = nombre
+
+  # Get / Set
+  @property
+  def nota(self):
+    return self.__nota
+
+  @property
+  def id(self):
+    return self.__id
+
+  # Método
+  def anyadir_nota(self, nota):
+    if(nota <= 10 and nota >= 0):
+      self.nota = nota
+
+class Clase():
+  # Propiedades
+  __id = 0
+  profesor = None
+  alumnos = []
+  asignaturas = []
+
+  # Constructor
+  def __init__(self, alumnos, asignaturas):
+    self.__cargar_alumnos(alumnos)
+    self.__cargar_asignatura(asignaturas)
+
+  # Get / set
+  @property
+  def id(self):
+    return self.__id
+
+  # Métodos
+  def __anyadir_asignatura(self, asignatura):
+    self.asignaturas.append(asignatura)
+
+  def quitar_asignatura(self, asignatura):
+    self.asignatura.remove(asignatura)
+
+  def __anyadir_alumno(self, alumno):
+    if(alumno.edad >= 18):
+      self.alumnos.append(alumno)
+
+  def quitar_alumno(self, alumno):
+    self.alumnos.append(alumno)
+
+  def cargar_alumnos(self, alumnos):
+    for nombre in alumnos:
+      nuevo_alumno = Alumno(nombre, "","",18)
+      self.anyadir_alumno(nuevo_alumno)
+
+  def cargar_asignatura(self, asignaturas):
+    for nombre in asignaturas:
+      nueva_asignatura = Asignatura(nombre)
+      self.anyadir_asignatura(nueva_asignatura)
+  
+  def mostrar(self):
+    for i_alumnos in self.alumnos:
+      print(i_alumnos.nombre)
+    for i_asignaturas in self.asignaturas:
+      print(i_asignaturas.nombre)
+
+diego = Alumno("Diego","Jarauta","00000000X",33)
+print(diego.dni)
+print(diego.edad)
+#diego.dni = ""
+diego.edad = 50
+print(diego.dni)
+print(diego.edad)
+diego.edad= 101
