@@ -1,0 +1,106 @@
+class Alumno():
+    # Propiedades
+    nombre = ""
+    apellido = ""
+    dni = ""
+    edad = 0
+
+    # Añadido de kata_02
+    asignaturas = []
+
+    # Quitado de kata_01
+    # nota = 0
+
+    # Constructor
+    def __init__(self,nombre,apellido,dni,edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.dni = dni
+        self.edad = edad
+
+    # Metodos
+    def Saludar(self):
+        print("Hola " + self.nombre)
+
+    def Nota(self, nota):
+        if(nota <= 10 and nota >= 0):
+            self.nota = nota
+
+    def Cumple(self):
+        self.edad += 1
+
+    def Mostrar_alumno(self):
+        print(f'Su nombre es {self.nombre} {self.apellido}.')
+        print("Con DNI: " + self.dni)
+        print("Tiene " + str(self.edad) + " años.")
+
+        # Añadido kata_02
+        print(self.asignaturas)
+
+    # Función añadida kata_02
+    def anyadir_asignatura(self, asignatura):
+        self.asignaturas.append(asignatura)
+
+        # Quitado de kata_01
+        # print("Su nota es: " + str(self.nota))
+
+class Asignatura():
+  # Propiedades
+  nombre = ""
+  nota = 0
+
+  # Constructor
+  def __init__(self, nombre):
+    self.nombre = nombre
+
+  # Método
+  def anyadir_nota(self, nota):
+    if(nota <= 10 and nota >= 0):
+      self.nota = nota
+
+class Clase():
+  # Propiedades
+  profesor = None
+  alumnos = []
+  asignaturas = []
+
+  # Constructor
+  def __init__(self, alumnos, asignaturas):
+    self.cargar_alumnos(alumnos)
+    self.cargar_asignatura(asignaturas)
+
+  # Métodos
+  def anyadir_asignatura(self, asignatura):
+    self.asignaturas.append(asignatura)
+
+  def quitar_asignatura(self, asignatura):
+    self.asignatura.remove(asignatura)
+
+  def anyadir_alumno(self, alumno):
+    if(alumno.edad >= 18):
+      self.alumnos.append(alumno)
+
+  def quitar_alumno(self, alumno):
+    self.alumnos.append(alumno)
+
+  def cargar_alumnos(self, alumnos):
+    for nombre in alumnos:
+      nuevo_alumno = Alumno(nombre, "","",18)
+      self.anyadir_alumno(nuevo_alumno)
+
+  def cargar_asignatura(self, asignaturas):
+    for nombre in asignaturas:
+      nueva_asignatura = Asignatura(nombre)
+      self.anyadir_asignatura(nueva_asignatura)
+  
+  def mostrar(self):
+    for i_alumnos in self.alumnos:
+      print(i_alumnos.nombre)
+    for i_asignaturas in self.asignaturas:
+      print(i_asignaturas.nombre)
+
+alumnos = ["Manuel", "Ana", "Jorge"]
+asignaturas = ["Matematicas","Fisica","Sociales","Gimnasia"]
+
+aula = Clase(alumnos,asignaturas)
+aula.mostrar()
