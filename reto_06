@@ -61,6 +61,11 @@ class TestGeometria(unittest.TestCase):
       r.append(case) 
     self.assertEqual(r,["Cuadrado","Circulo", "Tiangulo", "Rectangulo", "Pentagono","Rombo", "Romboide", "Trapecio"])
 
+  def test_switch(self):
+    result = [g.switch(n) for n in self.a]
+    self.assertEqual(result,[1, 4, 9, 16, 25, 36, 49, 64])
+    self.assertEqual(r,["Cuadrado","Circulo", "Tiangulo", "Rectangulo", "Pentagono","Rombo", "Romboide", "Trapecio"])
+
   def tearDown(self):
     print('tearDown - OK')
     del self.a
